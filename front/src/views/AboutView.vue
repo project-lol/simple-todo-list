@@ -1,15 +1,34 @@
+<script setup>
+import { ref } from 'vue'
+const text = ref('hello world')
+const titleClass = ref('title')
+const count = ref(0)
+
+const changeTitleColor = () => {
+  titleClass.value = 'title-blue'
+}
+
+const incrementCount = () => {
+  count.value++
+}
+</script>
+
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <h1 :class="titleClass">{{ text }}</h1>
+  <button @click="changeTitleColor">Change title color</button>
+  <p>Count: {{ count }}</p>
+  <button @click="incrementCount">Increment count</button>
+
+  <br />
+  <input v-model="text" />
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+.title {
+  color: red;
+}
+
+.title-blue {
+  color: blue;
 }
 </style>
